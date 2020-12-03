@@ -60,15 +60,16 @@ File info: display.php (displays all info)
 
 <?php
 //Initializing connection variables
-$host = "sql107.epizy.com";
-$user = "epiz_27183802";
-$password_db = "WODdwohllH";
-$database = "epiz_27183802_fcc59";
+$host = "host";
+$user = "username";
+$password_db = "pass";
+$database = "db";
 $query_show= "SELECT * from fcc59";
 
 
-//THe salt
+//The salt
 $options = [  'cost' => 14, ];
+		
 //Initializing the connection object
 $con = mysqli_connect($host, $user, $password_db, $database);
 //Checking for successfull connections
@@ -85,12 +86,12 @@ if(mysqli_connect_errno($con)){
              echo "<center><h1>Welcome ".$_SESSION['username']."</center></h1>";
                          echo"<h4>(Please rotate for a better view)</h4> ";
 
-  
-echo"<span class='display'>";
-echo'<table cellspacing="0" border="0" id="freeze">';
-echo"<thead><tr><th>Serial</th> <th> Cadet Number</th> <th> Cadet Name</th><th>Full Name</th><th>Blood Group</th><th>Contact Number</th><th>Institution</th><th>Permanent Address </th></tr></thead>";
-$xyz = mysqli_query($con, $query_show);
-while($row = mysqli_fetch_array($xyz)){
+//Printing the table (fullname)
+  echo"<span class='display'>";
+  echo'<table cellspacing="0" border="0" id="freeze">';
+  echo"<thead><tr><th>Serial</th> <th> Cadet Number</th> <th> Cadet Name</th><th>Full Name</th><th>Blood Group</th><th>Contact Number</th><th>Institution</th><th>Permanent Address </th></tr></thead>";
+  $xyz = mysqli_query($con, $query_show);
+  while($row = mysqli_fetch_array($xyz)){
   echo"<tr>";
   echo "<td>".$row['id']."</td>";
   echo "<td>".$row['Cadet_No']."</td>";
@@ -107,6 +108,7 @@ while($row = mysqli_fetch_array($xyz)){
 
   }
       else{
+	      //Printing the guest table
          echo "<center><h1>Welcome Guest</center></h1>
           <h4>(Please rotate for a better view)</h4>";
          
@@ -132,7 +134,7 @@ while($row = mysqli_fetch_array($xyz)){
   
     }
 
-  //*************************Password Hash Function DO NOT UNCOMMENT */
+  //*************************Password Hash Function *************/
 /*
   $hashedpassword="";
   $i=0;
@@ -175,7 +177,7 @@ while($row = mysqli_fetch_array($xyz)){
 </div>
 
 <script>
-
+//JS for responsive navbar
 
    var z=1;
 function myFunction() {
@@ -195,7 +197,7 @@ function myFunction() {
   }
 }
 
-
+//JS for a modal login bar
 // Get the modal
 var credits = document.getElementById("myCredits");
 
