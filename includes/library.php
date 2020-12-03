@@ -2,10 +2,10 @@
 
 <?php
 //Initializing connection variables
-$host = "sql107.epizy.com";
-$user = "epiz_27183802";
-$password_db = "WODdwohllH";
-$database = "epiz_27183802_fcc59";
+$host = "hostname";
+$user = "username";
+$password_db = "pass";
+$database = "db";
 $connectionOkay= false;
 //Initializing the connection object
 $con = mysqli_connect($host, $user, $password_db, $database);
