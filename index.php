@@ -12,24 +12,22 @@ session_start();
 unset($_SESSION["username"]);
 require "includes/library.php";
 
- if (isset($_POST['submit'])) {
-
- 
-  $username=filter_var($_POST['username'],FILTER_SANITIZE_STRING) ;
- $password=filter_var($_POST['password'],FILTER_SANITIZE_STRING) ;
- $query_user= "SELECT * from fcc59 WHERE Username='$username'";
+//Processing login form
+if (isset($_POST['submit'])) {
+//Setting our values
+$username=filter_var($_POST['username'],FILTER_SANITIZE_STRING) ;
+$password=filter_var($_POST['password'],FILTER_SANITIZE_STRING) ;
+$query_user= "SELECT * from fcc59 WHERE Username='$username'";
 $result = mysqli_query($con, $query_user);
 
 // Associative array
 $row = mysqli_fetch_array($result);
 
+ //Successful Verification
  if(password_verify($password,$row['Password'])){
    $_SESSION['username']="$username";
-   
-
    header("Location: http://fcc59.epizy.com/display.php");
    exit();
- 
    }
    else{
        echo '<script>alert("Sorry your records do not match anyone in our database!")
@@ -41,34 +39,29 @@ $row = mysqli_fetch_array($result);
        
    }
  }
-
-
 ?>
-
+<!-- HTML DOC Starts from here -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">  </script> 
-  <script src="https://kit.fontawesome.com/7677547a12.js" crossorigin="anonymous"></script>
+<!-- Scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">  </script> 
+<script src="https://kit.fontawesome.com/7677547a12.js" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="./styles/style.css?ver=2" />
 <script src="./scripts/script.js"></script>
-
-
-
- <!-- Showing the top icon beside the title and support for different browsers -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="shortcut icon" href="./assets/Favicon.ico" type="image/x-icon">
-
-
+ 
+<!-- Showing the top icon beside the title and support for different browsers -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="./assets/Favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -82,11 +75,9 @@ $row = mysqli_fetch_array($result);
               <a href="https://fcc.army.mil.bd/">Official Site</a>
               <a href="#" id="btn_creds">Credits</a>
               <a href="https://en.wikipedia.org/wiki/Faujdarhat_Cadet_College">About</a>
-               <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i></a>
               </div>
-              
             </div> 
    
 <main>
@@ -120,7 +111,7 @@ To unassuming eyes, it was a school designed to ensure a steady pipeline of futu
         
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="non-blurry-content">
+           <div class="non-blurry-content">
             <div class="modal-content_background"></div>
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times"></i></button>
@@ -216,13 +207,7 @@ window.onclick = function(event) {
   }
 }
 
-
-
 </script>
-
-
-
-
 
 </main>
 </body>
